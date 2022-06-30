@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">My Application</string>
+    <string name="hello_world">سلام به همه</string>
+    <string name="android_class">android class</string>
 </resources>
