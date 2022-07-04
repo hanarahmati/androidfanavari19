@@ -1,11 +1,44 @@
 package co.fanavari.myapplication
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Toast
+import androidx.appcompat.widget.AppCompatButton
+import androidx.appcompat.widget.AppCompatImageButton
+import co.fanavari.myapplication.databinding.ActivityDashboardBinding
+import com.google.android.material.button.MaterialButton
+import com.google.android.material.card.MaterialCardView
 
 class DashboardActivity : AppCompatActivity() {
+
+    private lateinit var binding: ActivityDashboardBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_dashboard)
+//        setContentView(R.layout.activity_dashboard)
+
+        binding = ActivityDashboardBinding.inflate(layoutInflater)
+
+        setContentView(binding.root)
+
+        /*val backButton: AppCompatImageButton = findViewById(R.id.backButton)
+        val logOutButton: AppCompatImageButton = findViewById(R.id.logOutButton)
+
+        val todoButton: MaterialButton = findViewById(R.id.todoButton)
+        val layoutCard: MaterialCardView = findViewById(R.id.layoutCards)
+
+        layoutCard.setOnClickListener {
+            Toast.makeText(this,"layout card is clicked!", Toast.LENGTH_LONG).show()
+        }*/
+
+        binding.layoutCards.setOnClickListener {
+            showToast("this is my new toast from layout card")
+        }
+
+        binding.editProfileButton.setOnClickListener {
+            val intent = Intent(this, MainActivity::class.java)
+            startActivity(intent)
+        }
     }
 }

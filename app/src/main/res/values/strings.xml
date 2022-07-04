@@ -2,4 +2,16 @@
     <string name="app_name">My Application</string>
     <string name="hello_world">سلام به همه</string>
     <string name="android_class">android class</string>
+    <string name="mentor_name">hananeh rahmatzehi</string>
+    <string name="mentor">mentor</string>
+    <string name="to_do_list">todo list</string>
+    <string name="edit_profile">edit profile</string>
+    <string name="layouts">layouts</string>
+    <string name="lifecycles">lifecycles</string>
+    <string name="internet">internet</string>
+    <string name="database">database</string>
+    <string name="arch">architecture</string>
+    <string name="themes">themes</string>
+    <string name="company_name">company name</string>
+    <string name="company_year">company year</string>
 </resources>
