@@ -40,5 +40,20 @@ class DashboardActivity : AppCompatActivity() {
             val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)
         }
+
+        binding.themeCard.setOnClickListener {
+            val intent = Intent(this, IntentExampleActivity::class.java)
+            val mentorName: String = binding.textViewMentorName.text.toString()
+
+            intent.putExtra("class Number", 7)
+            intent.putExtra(Constant.MENTOR_NAME, mentorName)
+
+            startActivity(intent)
+
+        }
+        binding.layoutCards.setOnClickListener {
+            val intent = Intent(this, ComponentActivity::class.java)
+            startActivity(intent)
+        }
     }
 }
