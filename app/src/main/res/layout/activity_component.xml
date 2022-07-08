@@ -9,25 +9,51 @@
 
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="152dp"
         android:fitsSystemWindows="true">
 
-        <com.google.android.material.appbar.MaterialToolbar
-            android:id="@+id/topAppBar"
+        <com.google.android.material.appbar.CollapsingToolbarLayout
             android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            app:title="activity component"
-            app:menu="@menu/top_app_bar"
-            app:navigationIcon="@drawable/ic_menu_24"
-            style="@style/Widget.MaterialComponents.Toolbar.Primary"
-            />
+            android:layout_height="match_parent"
+            app:expandedTitleMarginStart="72dp"
+            app:expandedTitleMarginBottom="28dp"
+            android:fitsSystemWindows="true"
+            app:expandedTitleTextAppearance="@style/TextAppearance.App.CollapsingToolbar.Expanded"
+            app:collapsedTitleTextAppearance="@style/TextAppearance.App.CollapsingToolbar.Collapsed">
 
+            <!--  <ImageView
+                  android:layout_width="match_parent"
+                  android:layout_height="match_parent"
+                  android:src="@drawable/profile"
+                  android:scaleType="centerCrop"
+                  android:fitsSystemWindows="true"
+                  android:contentDescription="@string/content_description_media"
+                  />-->
+
+            <com.google.android.material.appbar.MaterialToolbar
+                android:id="@+id/topAppBar"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                app:title="components"
+                app:menu="@menu/top_app_bar"
+                android:elevation="0dp"
+                android:background="@android:color/transparent"
+                app:navigationIcon="@drawable/ic_menu_24"
+                style="@style/Widget.MaterialComponents.Toolbar.Primary"
+                />
+
+
+
+        </com.google.android.material.appbar.CollapsingToolbarLayout>
     </com.google.android.material.appbar.AppBarLayout>
+
+
 
     <!-- Note: A RecyclerView can also be used -->
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:paddingBottom="100dp"
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
         <LinearLayout
@@ -93,6 +119,143 @@
                     android:enabled="false"
                     android:text="label_5"/>
             </RadioGroup>
+
+            <com.google.android.material.button.MaterialButtonToggleGroup
+                android:id="@+id/toggleButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+                <Button
+                    android:id="@+id/button1toggle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="button 1"
+                    style="?attr/materialButtonOutlinedStyle"
+                    />
+                <Button
+                    android:id="@+id/button2toggle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Button 2"
+                    style="?attr/materialButtonOutlinedStyle"
+                    />
+                <Button
+                    android:id="@+id/button3toggle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Button 3"
+                    style="?attr/materialButtonOutlinedStyle"
+                    />
+            </com.google.android.material.button.MaterialButtonToggleGroup>
+
+            <com.google.android.material.button.MaterialButtonToggleGroup
+                android:id="@+id/toggleButtonIconOnly"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+                <Button
+                    android:id="@+id/button1toggleIconOnly"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:icon="@drawable/ic_add"
+                    style="@style/Widget.App.Button.OutlinedButton.IconOnly"
+                    />
+                <Button
+                    android:id="@+id/button2toggleIconOnly"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:icon="@drawable/ic_search_24"
+                    style="@style/Widget.App.Button.OutlinedButton.IconOnly"
+                    />
+                <Button
+                    android:id="@+id/button3toggleIconOnly"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:icon="@drawable/ic_favorite_24"
+                    style="@style/Widget.App.Button.OutlinedButton.IconOnly"
+                    />
+            </com.google.android.material.button.MaterialButtonToggleGroup>
+
+            <com.google.android.material.chip.ChipGroup
+                android:id="@+id/chip_group_filter"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:singleSelection="true">
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chip1"
+                    style="@style/Widget.MaterialComponents.Chip.Entry"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="filter1"/>
+
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chip2"
+                    style="@style/Widget.MaterialComponents.Chip.Entry"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="filter2"/>
+
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chip3"
+                    style="@style/Widget.MaterialComponents.Chip.Entry"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="filter3"/>
+            </com.google.android.material.chip.ChipGroup>
+
+
+            <com.google.android.material.switchmaterial.SwitchMaterial
+                android:id="@+id/switchMaterial"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:checked="true"
+                android:text="@string/label_1"/>
+            <com.google.android.material.switchmaterial.SwitchMaterial
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="@string/label_2"/>
+            <com.google.android.material.switchmaterial.SwitchMaterial
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="@string/label_3"/>
+            <com.google.android.material.switchmaterial.SwitchMaterial
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="@string/label_4"/>
+            <com.google.android.material.switchmaterial.SwitchMaterial
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:enabled="false"
+                android:text="@string/label_5"/>
+            <Spinner
+                android:id="@+id/planets_spinner"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <RadioGroup
+                android:id="@+id/radio_gender"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <RadioButton
+                    android:id="@+id/radio_male"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:onClick="onRadioButtonClicked"
+                    android:text="@string/male"/>
+
+                <RadioButton
+                    android:id="@+id/radio_female"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:onClick="onRadioButtonClicked"
+                    android:text="@string/female"/>
+
+            </RadioGroup>
+
+
 
         </LinearLayout>
 
