@@ -55,7 +55,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:text="label_4"/>
-            <com.google.android.material.checkbox.MaterialCheckBox
+            <CheckBox
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:enabled="false"

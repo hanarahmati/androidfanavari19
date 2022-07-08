@@ -55,5 +55,10 @@ class DashboardActivity : AppCompatActivity() {
             val intent = Intent(this, ComponentActivity::class.java)
             startActivity(intent)
         }
+
+        binding.archCards.setOnClickListener {
+            val intent = Intent(this, NavigationComponentExampleActivity::class.java)
+            startActivity(intent)
+        }
     }
 }
