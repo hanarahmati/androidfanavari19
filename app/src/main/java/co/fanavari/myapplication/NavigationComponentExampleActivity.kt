@@ -12,7 +12,9 @@ import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import co.fanavari.myapplication.databinding.ActivityNavigationComponentExampleBinding
+import co.fanavari.myapplication.utils.ConnectivityManager
 import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
 @AndroidEntryPoint
 class NavigationComponentExampleActivity : AppCompatActivity() {
@@ -41,6 +43,7 @@ class NavigationComponentExampleActivity : AppCompatActivity() {
 
         binding.navigationView.setupWithNavController(navController)
         binding.bottomNavView.setupWithNavController(navController)
+
 
         appBarConfig = AppBarConfiguration(navController.graph, drawerLayout)
         setupActionBarWithNavController(navController, appBarConfig)

@@ -14,8 +14,6 @@ def apikeyPropertiesFile = rootProject.file("apikey.properties")
 def apikeyPro = new Properties()
 apikeyPro.load(new FileInputStream(apikeyPropertiesFile))
 
-//buildConfigField "String", "API_KEY", "\"${properties.getProperty('API_KEY')}\""
-
 
 android {
     compileSdk 32
