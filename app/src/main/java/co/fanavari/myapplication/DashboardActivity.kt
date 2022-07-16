@@ -6,9 +6,11 @@ import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.widget.AppCompatButton
 import androidx.appcompat.widget.AppCompatImageButton
+import co.fanavari.myapplication.coroutines.CoroutinesActivity
 import co.fanavari.myapplication.databinding.ActivityDashboardBinding
 import com.google.android.material.button.MaterialButton
 import com.google.android.material.card.MaterialCardView
+import kotlinx.coroutines.CoroutineScope
 
 class DashboardActivity : AppCompatActivity() {
 
@@ -58,6 +60,11 @@ class DashboardActivity : AppCompatActivity() {
 
         binding.archCards.setOnClickListener {
             val intent = Intent(this, NavigationComponentExampleActivity::class.java)
+            startActivity(intent)
+        }
+
+        binding.internetCards.setOnClickListener {
+            val intent = Intent(this, CoroutinesActivity::class.java)
             startActivity(intent)
         }
     }
