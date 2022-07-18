@@ -14,12 +14,28 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MyApplication"
         tools:targetApi="31">
+
+        <service
+            android:name=".huawei.MyPushService"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="com.huawei.push.action.MESSAGING_EVENT" />
+                <action android:name="android.intent.action.RESPOND_VIA_MESSAGE"/>
+            </intent-filter>
+        </service>
+
+        <activity
+            android:name=".huawei.HuaweiPushActivity"
+            android:exported="false" />
+
         <activity
             android:name=".coroutines.CoroutinesActivity"
             android:exported="false" />
+
         <activity
             android:name=".NavigationComponentExampleActivity"
             android:exported="false" />
+
         <activity
             android:name=".LifecyleActivity"
             android:exported="false" />
@@ -50,10 +66,20 @@
         <activity
             android:name=".ComponentActivity"
             android:exported="false" />
+        <meta-data
+            android:name="push_kit_auto_init_enabled"
+            android:value="true" />
     </application>
-    <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
+    <queries>
+        <intent>
+            <action android:name="com.huawei.hms.core.aidlservice" />
+        </intent>
+    </queries>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="com.android.alarm.permission.SET_ALARM" />
+
+    <uses-permission android:name="android.permission.INTERNET" />
+
 
 </manifest>

@@ -8,6 +8,7 @@ import androidx.appcompat.widget.AppCompatButton
 import androidx.appcompat.widget.AppCompatImageButton
 import co.fanavari.myapplication.coroutines.CoroutinesActivity
 import co.fanavari.myapplication.databinding.ActivityDashboardBinding
+import co.fanavari.myapplication.huawei.HuaweiPushActivity
 import com.google.android.material.button.MaterialButton
 import com.google.android.material.card.MaterialCardView
 import kotlinx.coroutines.CoroutineScope
@@ -65,6 +66,11 @@ class DashboardActivity : AppCompatActivity() {
 
         binding.internetCards.setOnClickListener {
             val intent = Intent(this, CoroutinesActivity::class.java)
+            startActivity(intent)
+        }
+
+        binding.todoButton.setOnClickListener {
+            val intent = Intent(this, HuaweiPushActivity::class.java)
             startActivity(intent)
         }
     }
