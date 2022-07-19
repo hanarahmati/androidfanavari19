@@ -1,6 +1,5 @@
 package co.fanavari.myapplication.huawei
 
-import android.app.Notification
 import android.app.NotificationChannel
 import android.app.NotificationManager
 import android.app.PendingIntent
@@ -12,7 +11,6 @@ import android.os.Bundle
 import android.text.TextUtils
 import android.util.Log
 import androidx.core.app.NotificationCompat
-import co.fanavari.myapplication.LifecyleActivity
 import co.fanavari.myapplication.NavigationComponentExampleActivity
 import co.fanavari.myapplication.R
 import co.fanavari.myapplication.databinding.ActivityHuaweiPushBinding
@@ -40,8 +38,13 @@ class HuaweiPushActivity : AppCompatActivity() {
             }
             buttonSetToken.setOnClickListener {
                 CoroutineScope(Dispatchers.IO).launch {
-                    actionCreateLocalNotification("test","testtttttttttttt newwww")
+                    actionCreateLocalNotification("test", "testtttttttttttt newwww")
                 }
+            }
+            buttonOpenMapActivity.setOnClickListener {
+                val intent = Intent(this@HuaweiPushActivity, MapActivity::class.java)
+                startActivity(intent)
+
             }
         }
 
@@ -68,8 +71,9 @@ class HuaweiPushActivity : AppCompatActivity() {
                 Log.e(TAG, "get token failed, $e")
             }
 
+        }
     }
-    }
+
     private fun sendRegTokenToServer(token: String?) {
         Log.i(TAG, "sending token to server. token:$token")
         val messageId = System.currentTimeMillis().toString()
@@ -122,24 +126,25 @@ class HuaweiPushActivity : AppCompatActivity() {
 
     private fun addTopic() {
         binding.btnGetToken.setOnClickListener {
-                try {
-                    HmsMessaging.getInstance(this@HuaweiPushActivity)
-                        .subscribe("msg")
-                        .addOnCompleteListener { task ->
-                            if (task.isSuccessful) {
-                                Log.i(TAG, "subscribe Complete")
-                                showLog("subscribe Complete")
-                            } else {
-                                showLog("subscribe failed: ret=" + task.exception.message)
-                            }
+            try {
+                HmsMessaging.getInstance(this@HuaweiPushActivity)
+                    .subscribe("msg")
+                    .addOnCompleteListener { task ->
+                        if (task.isSuccessful) {
+                            Log.i(TAG, "subscribe Complete")
+                            showLog("subscribe Complete")
+                        } else {
+                            showLog("subscribe failed: ret=" + task.exception.message)
                         }
-                } catch (e: Exception) {
-                    showLog("subscribe failed: exception=" + e.message)
-                }
+                    }
+            } catch (e: Exception) {
+                showLog("subscribe failed: exception=" + e.message)
+            }
 
-        }}
+        }
+    }
 
-    private fun actionCreateLocalNotification(title: String?, message: String?){
+    private fun actionCreateLocalNotification(title: String?, message: String?) {
         val channelId = "test channel"
         val channelName = "test channel name"
         val intent = Intent(this, NavigationComponentExampleActivity::class.java)
@@ -147,15 +152,17 @@ class HuaweiPushActivity : AppCompatActivity() {
 
         val pendingIntent = PendingIntent.getActivity(this, 0, intent, PendingIntent.FLAG_ONE_SHOT)
 
-        val builder: NotificationCompat.Builder = NotificationCompat.Builder(applicationContext,channelId )
-            .setSmallIcon(R.drawable.ic_add)
-            .setContentIntent(pendingIntent)
-            .setContentText(message)
-            .setContentTitle(title)
+        val builder: NotificationCompat.Builder =
+            NotificationCompat.Builder(applicationContext, channelId)
+                .setSmallIcon(R.drawable.ic_add)
+                .setContentIntent(pendingIntent)
+                .setContentText(message)
+                .setContentTitle(title)
 
-        val notificationManager = getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
+        val notificationManager =
+            getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
 
-        if( Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             val notificationChannel =
                 NotificationChannel(channelId, channelName, NotificationManager.IMPORTANCE_HIGH)
             notificationManager.createNotificationChannel(notificationChannel)

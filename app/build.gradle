@@ -41,6 +41,7 @@ android {
             keyPassword '123456789'
             storeFile file('android19.jks')
             storePassword '123456789'
+            v2SigningEnabled true
         }
     }
 
@@ -99,6 +100,9 @@ dependencies {
     //huawei push
     implementation 'com.huawei.hms:push:6.5.0.300'
 
+    //huawei map
+    implementation 'com.huawei.hms:maps:6.5.1.300'
+//    implementation 'com.huawei.hms:maps-basic:6.5.0.301'
 
 
 }
