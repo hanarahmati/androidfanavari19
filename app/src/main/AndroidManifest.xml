@@ -2,6 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     package="co.fanavari.myapplication">
+<uses-sdk tools:overrideLibrary="com.huawei.agconnect.credential,com.huawei.agconnect.core,com.huawei.agconnect.https,com.huawei.agconnect.datastore"/>
 
     <application
         android:name=".MyApplication"
@@ -70,6 +71,17 @@
                 <action android:name="android.intent.action.RESPOND_VIA_MESSAGE" />
             </intent-filter>
         </service>
+
+        <meta-data
+            android:name="com.huawei.agconnect.AccessNetwork"
+            android:value="false" />
+        <meta-data
+            android:name="install_channel"
+            android:value="AppGallery"/>
+        <meta-data
+            android:name="analyticskit_adsid_collection_enabled"
+            android:value="true">
+        </meta-data>
     </application>
 
     <queries>

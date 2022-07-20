@@ -104,6 +104,9 @@ dependencies {
     implementation 'com.huawei.hms:maps:6.5.1.300'
 //    implementation 'com.huawei.hms:maps-basic:6.5.0.301'
 
+    implementation 'com.huawei.hms:hianalytics:6.6.0.300'
+    implementation 'com.android.installreferrer:installreferrer:2.2'
+
 
 }
 
