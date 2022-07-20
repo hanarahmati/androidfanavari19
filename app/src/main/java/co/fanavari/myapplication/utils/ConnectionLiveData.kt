@@ -4,6 +4,7 @@ import android.content.Context
 import android.content.Context.CONNECTIVITY_SERVICE
 import android.net.ConnectivityManager
 import android.net.Network
+import android.net.NetworkCapabilities
 import android.net.NetworkCapabilities.NET_CAPABILITY_INTERNET
 import android.net.NetworkRequest
 import android.util.Log
@@ -45,23 +46,22 @@ class ConnectionLiveData(context: Context) : LiveData<Boolean>() {
           Source: https://developer.android.com/reference/android/net/ConnectivityManager.NetworkCallback#onAvailable(android.net.Network)
          */
         override fun onAvailable(network: Network) {
+
+            super.onAvailable(network)
+
             Log.d(TAG, "onAvailable: ${network}")
             val networkCapabilities = cm.getNetworkCapabilities(network)
             val hasInternetCapability = networkCapabilities?.hasCapability(NET_CAPABILITY_INTERNET)
             Log.d(TAG, "onAvailable: ${network}, $hasInternetCapability")
             if (hasInternetCapability == true) {
                 // check if this network actually has internet
-                CoroutineScope(Dispatchers.IO).launch {
-                    val hasInternet = DoesNetworkHaveInternet.execute(network.socketFactory)
-                    if(hasInternet){
-                        withContext(Dispatchers.Main){
-                            Log.d(TAG, "onAvailable: adding network. ${network}")
-                            validNetworks.add(network)
-                            checkValidNetworks()
-                        }
-                    }
-                }
+
+                Log.d(TAG, "onAvailable: adding network. ${network}")
+                validNetworks.add(network)
+                checkValidNetworks()
             }
+
+
         }
 
         /*
@@ -72,6 +72,21 @@ class ConnectionLiveData(context: Context) : LiveData<Boolean>() {
             Log.d(TAG, "onLost: ${network}")
             validNetworks.remove(network)
             checkValidNetworks()
+        }
+
+        override fun onCapabilitiesChanged(
+            network: Network,
+            networkCapabilities: NetworkCapabilities
+        ) {
+            super.onCapabilitiesChanged(network, networkCapabilities)
+
+            if (networkCapabilities.hasCapability(NET_CAPABILITY_INTERNET)) {
+                validNetworks.add(network)
+                checkValidNetworks()
+            } else {
+                validNetworks.remove(network)
+                checkValidNetworks()
+            }
         }
 
     }
