@@ -12,7 +12,9 @@ import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import co.fanavari.myapplication.databinding.ActivityNavigationComponentExampleBinding
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class NavigationComponentExampleActivity : AppCompatActivity() {
     private lateinit var binding: ActivityNavigationComponentExampleBinding
 

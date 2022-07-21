@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
-
+<group android:checkableBehavior="single">
     <item
         android:id="@+id/firstFragment"
         android:title="first fragment"
@@ -11,4 +11,16 @@
         android:title="second fragment"
 
         />
+
+</group>
+
+    <item android:title="photos">
+        <menu>
+            <item
+                android:id="@+id/galleryFragment"
+                android:title="gallery"/>
+
+        </menu>
+    </item>
+
 </menu>
