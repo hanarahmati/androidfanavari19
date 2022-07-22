@@ -16,6 +16,7 @@
         <item name="bottomNavigationStyle">@style/Widget.App.BottomNavigationView</item>
 
 
+        <item name="android:fontFamily">@font/font_family</item>
         <!-- <item name="checkboxStyle">@style/Widget.App.CheckBox</item>-->
     </style>
 <!--
